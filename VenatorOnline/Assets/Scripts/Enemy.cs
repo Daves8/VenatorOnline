@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
         _startCoroutineW = false;
         _startCoroutineE = false;
         _nextPlace = false;
+        _agent.speed = 2;
     }
 
     void Update()
@@ -90,13 +91,20 @@ public class Enemy : MonoBehaviour
         _startCoroutineW = false;
     }
 
+    private void Dying()
+    {
+        _die = true;
+        _agent.enabled = false;
+        _animator.SetTrigger("Die");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!_die)
         {
             if (other.gameObject.tag == "Sword")
             {
-                _die = true;
+                Dying();
                 _animator.SetTrigger("Die");
             }
         }

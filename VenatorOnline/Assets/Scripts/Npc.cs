@@ -20,6 +20,8 @@ public class Npc : MonoBehaviour
 
     private GameObject[] _allBoars;
 
+    private bool _can = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +43,12 @@ public class Npc : MonoBehaviour
     {
         foreach (var boar in _allBoars)
         {
-            if (boar.GetComponent<Animal>()._die)
+            if (boar.GetComponent<Animal>()._die && _can)
             {
+                _can = false;
                 target.text = "";
                 message.text = "Задание выполнено. Получено 50 золота.";
+                Invoke("ClearMessage", 5f);
             }
         }
         
@@ -72,6 +76,11 @@ public class Npc : MonoBehaviour
             Cursor.visible = true;
             _cameraFreeLook1.enabled = false;
         }
+    }
+
+    private void ClearMessage()
+    {
+        message.text = "";
     }
 
     public void StartQuest()

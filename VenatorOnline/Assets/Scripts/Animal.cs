@@ -28,15 +28,12 @@ public class Animal : MonoBehaviour
         _startCoroutineW = false;
         _startCoroutineE = false;
         _nextPlace = false;
+        _agent.speed = 2;
     }
 
     void Update()
     {
-        if (_die)
-        {
-            _animator.SetTrigger("Die");
-            return;
-        }
+        if (_die) { return; }
 
         if (_agent.velocity.magnitude > 0.0f)
         {
