@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - UI
+  - CMFreeLook1
+  - Sword
+  - Boar
   layers:
   - Default
   - TransparentFX
